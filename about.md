@@ -32,5 +32,4 @@ Bear with me as I share my learning, experiments, finished and unfinished though
 
 Use the footer on this blog to take a look at my profile on **LinkedIn** and check out my earlier projects on **GitHub**. I also exist minimally on **Twitter** and that kinda sums up all my active digital footprint.
 
-You will also find some of my writing on the the OSFY and erstwhile MSDN magazine if you look hard enough :)
-
+IRL, I work as a Cloud Solution Architect with Microsoft India and help ISVs and startups overcome technical challenges, adopt the latest technologies, and evolve their solutions to the next level. I have a good handle on Microsoft AI Platform and have written several articles in the digital media on the topic and you can find some of them on the the OSFY and erstwhile MSDN magazine if you look hard enough :)
