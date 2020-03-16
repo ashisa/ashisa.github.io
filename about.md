@@ -30,3 +30,7 @@ Welcome to my blog powered by GitHub pages and the awesome [TeXt](https://github
 
 Bear with me as I share my learning, experiments, finished and unfinished thoughts on this blog - this blog itself is an experiment to see how this works and to instill a habit of writing and sharing.
 
+Use the footer on this blog to take a look at my profile on **LinkedIn** and check out my earlier projects on **GitHub**. I also exist minimally on **Twitter** and that kinda sums up all my active digital footprint.
+
+You will also find some of my writing on the the OSFY and erstwhile MSDN magazine if you look hard enough :)
+
