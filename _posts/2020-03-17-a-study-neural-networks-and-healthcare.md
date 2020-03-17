@@ -1,6 +1,6 @@
 ---
 title: Welcome
-tags: Azure, Neural Networks
+tags: Azure
 ---
 
 Welcome to my endeavor to share what I learn with you.
