@@ -13,6 +13,10 @@ This got me started with building something that uses this newfound power to do 
 
 Let's dive in!
 
+The problem that I want to solve with _UniTTY_ deals with deploying services on Azure. You'd think why is that a big deal? And, you are right! - deploying Azure services and automating them isn't a big deal and there are a lot of ways to do that - ARM templates, Azure CLI, PowerShell, Ansible, Terraform, REST APIs and more...
+
+
+
 
 
 
