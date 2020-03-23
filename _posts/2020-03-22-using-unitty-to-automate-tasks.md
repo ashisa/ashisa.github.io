@@ -15,7 +15,7 @@ The Azure Application offer on Azure Marketplace comes close but it doesn't work
 
 How does _UniTTY_ solve it for me? With the simple matter of converting my shell scripts to a web app and allowing me to send a bunch of arguments using the URL!
 
-Let's take an example where I use UniTTY to create a resource group and virtual machine and send the names of these entities using the URL.
+Let's take an example where I use _UniTTY_ to create a resource group and virtual machine and send the names of these entities using the URL.
 
 We can accomplish this in two ways - first, we send everything using the URL or we can create a script which can be included with the image by adding the steps to the Dockerfile available in the _UniTTY_'s GitHub repo.
 
@@ -64,7 +64,7 @@ RUN curl https://raw.githubusercontent.com/ashisa/unitty/master/script-cmd/azure
 # Running the script as CMD
 CMD [ "/usr/bin/gotty", "--permit-arguments", "/root/azurecli-script.sh" ]
 ```
-An exmaple is available at [https://github.com/ashisa/unitty/tree/master/script-cmd](https://github.com/ashisa/unitty/tree/master/script-cmd). You can clone the repo and make changes to the script as you wish.
+An example is available at [https://github.com/ashisa/unitty/tree/master/script-cmd](https://github.com/ashisa/unitty/tree/master/script-cmd). You can clone the repo and make changes to the script as you wish.
 
 Build the image -
 ```
@@ -80,13 +80,4 @@ Now you can launch the browser and provide the script arguments using the follow
 
 You can use _GoTTY_ options such as restricting how many clients can connect to it and how many times; as well as randomizing the URL and adding username/password to access the URL so that should cover the essentials when it comes to security.
 
-
-
-
-
-
-
-
-
-
-
+Stay tuned for more things that become easy and possible with _UniTTY_.
