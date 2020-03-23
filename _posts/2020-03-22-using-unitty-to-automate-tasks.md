@@ -25,20 +25,47 @@ az login
 az group create --name myrg --location southindia
 az vm create --name myvm01 --resource-group myrg --image UbuntuLTS
 ```
-If we want to do this using a script, it would look like the following -
+To run these commands as a web app, you can run _UniTTY_ using Docker as following -
+```
+docker run -it -p 8080:8080 docker.io/ashisa/unitty gotty /bin/bash -c "az login && az group create --name myrg --location southindia && az vm create --name myvm01 --resource-group myrg --image UbuntuLTS --admin-username 'vmadmin' --admin-password 'R$ND0MPA%%WD'"
+```
+Single quotes are needed since there are special characters in the password.
+
+Once you run it and browse to [http://127.0.0.1:8080](http://127.0.0.1:8080), you will see that you are prompted to connect to your Azure subscription which will be followed by the resource group and VM creation steps.
+
+If you want to do this using a script, it would look like the following -
 ```
 #!/bin/bash
-az login
-az group create --name $1 --location southindia
-az vm create --name $2 --resource-group $1 --image UbuntuLTS
+if [ "$1" == ""] || [ "$2" == ""]
+then
+    echo "syntax: $0 resourcegroup-name vm-name"
+else
+    az login
+    az group create --name $1 --location southindia
+    az vm create --name $2 --resource-group $1 --image UbuntuLTS --admin-username 'vmadmin' --admin-password 'R$ND0MPA%%WD'
+fi
 ```
-This script requires two arguments - name of the resource group and the name of the VM.
+This script requires two arguments - name of the resource group and the name of the VM and the syntax will look like the following -
+```
+<scriptname> <resource group name> <vm name>
+```
 
-Taking the multiple commands approach, you can run _UniTTY_ using Docker as following -
+If you decide to use the script route, you will need to add the script to the image and build UniTTY with the following diretives in the Dockerfile -
 ```
-docker run -it -p 8080:8080 docker.io/ashisa/unitty gotty /bin/bash -c "az login && az group create --name myrg --location southindia && az vm create --name myvm01 --resource-group myrg --image UbuntuLTS --admin-username vmadmin --admin-password R$ND0MPA%%WD"
+# Downloading the script from GitHub
+RUN curl https://raw.githubusercontent.com/ashisa/unitty/master/script-cmd/azurecli-script.sh -o ~/azurecli-script.sh \
+  && chmod a+x ~/azurecli-script.sh
+
+# Running the script as CMD
+CMD [ "/usr/bin/gotty", "--permit-arguments", "~/azurecli-script.sh" ]
 ```
-Once you run it and browse to [http://127.0.0.1:8080](http://127.0.0.1:8080), you will see that you are prompted to connect to your Azure subscription which will be followed by the resource group and VM creation.
+Now you can launch the browser and provide the script arguments using the following URL -
+
+[http://127.0.0.1:8080/arg=myrg%20myvm01](http://127.0.0.1:8080/arg=myrg%20myvm01)
+
+You can use GoTTY options such as restricting how many clients can connect to it and how many times; as well as randomizing the URL and adding username/password to access the URL so that should cover the essentials when it comes to security.
+
+
 
 
 
