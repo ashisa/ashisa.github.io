@@ -36,13 +36,19 @@ Once you run it and browse to [http://127.0.0.1:8080](http://127.0.0.1:8080), yo
 If you want to do this using a script, it would look like the following -
 ```
 #!/bin/bash
-if [ "$1" == ""] || [ "$2" == ""]
+ARG=$1
+RG=$(echo $ARG |awk '{print $1}')
+VM=$(echo $ARG |awk '{print $2}')
+
+if [ "$RG" == "" ] || [ "$VM" == "" ]
 then
     echo "syntax: $0 resourcegroup-name vm-name"
+    echo 
+    echo "Send the argument using this URL - http://127.0.0.1:8080/arg=myrg%20myvm01"
 else
     az login
-    az group create --name $1 --location southindia
-    az vm create --name $2 --resource-group $1 --image UbuntuLTS --admin-username 'vmadmin' --admin-password 'R$ND0MPA%%WD'
+    az group create --name $RG --location southindia
+    az vm create --name $VM --resource-group $RG --image UbuntuLTS --admin-username 'vmadmin' --admin-password 'R$ND0MPA%%WD'
 fi
 ```
 This script requires two arguments - name of the resource group and the name of the VM and the syntax will look like the following -
@@ -58,6 +64,14 @@ RUN curl https://raw.githubusercontent.com/ashisa/unitty/master/script-cmd/azure
 
 # Running the script as CMD
 CMD [ "/usr/bin/gotty", "--permit-arguments", "~/azurecli-script.sh" ]
+```
+Build the image -
+```
+docker build -t ashisa/unitty-script .
+```
+Once you've built the image, you can run it as following -
+```
+docker run -it -p 8080:8080 ashisa/unitty-script
 ```
 Now you can launch the browser and provide the script arguments using the following URL -
 
