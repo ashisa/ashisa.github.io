@@ -55,16 +55,17 @@ This script requires two arguments - name of the resource group and the name of 
 ```
 <scriptname> <resource group name> <vm name>
 ```
-
-If you decide to use the script route, you will need to add the script to the image and build UniTTY with the following diretives in the Dockerfile -
+If you decide to use the script route, you will need to add the script to the image and build _UniTTY_ with the following diretives in the Dockerfile -
 ```
 # Downloading the script from GitHub
 RUN curl https://raw.githubusercontent.com/ashisa/unitty/master/script-cmd/azurecli-script.sh -o ~/azurecli-script.sh \
   && chmod a+x ~/azurecli-script.sh
 
 # Running the script as CMD
-CMD [ "/usr/bin/gotty", "--permit-arguments", "~/azurecli-script.sh" ]
+CMD [ "/usr/bin/gotty", "--permit-arguments", "/root/azurecli-script.sh" ]
 ```
+An exmaple is available at [https://github.com/ashisa/unitty/tree/master/script-cmd](https://github.com/ashisa/unitty/tree/master/script-cmd). You can clone the repo and make changes to the script as you wish.
+
 Build the image -
 ```
 docker build -t ashisa/unitty-script .
@@ -77,7 +78,7 @@ Now you can launch the browser and provide the script arguments using the follow
 
 [http://127.0.0.1:8080/arg=myrg%20myvm01](http://127.0.0.1:8080/arg=myrg%20myvm01)
 
-You can use GoTTY options such as restricting how many clients can connect to it and how many times; as well as randomizing the URL and adding username/password to access the URL so that should cover the essentials when it comes to security.
+You can use _GoTTY_ options such as restricting how many clients can connect to it and how many times; as well as randomizing the URL and adding username/password to access the URL so that should cover the essentials when it comes to security.
 
 
 
