@@ -9,9 +9,9 @@ Last week, this quest lead me to two awesome projects on GitHub - [ttyd](https:/
 
 [UniTTY](https://github.com/ashisa/unitty) is a Linux container image that comes preintalled with _Azure CLI_, _PowerShell Core 7_ and _GoTTY_. You can head over to the project here - [https://github.com/ashisa/unitty](https://github.com/ashisa/unitty) - to read more about _UniTTY_ and learn how to use it because here we will just see how I am using it for automation.
 
-The problem that I want to solve with _UniTTY_ deals with deploying services on Azure. You'd think why is that a big deal? And, you are right! - deploying Azure services and automating them isn't a big deal and there are a lot of ways to do that - ARM templates, Azure CLI, PowerShell, Ansible, Terraform, REST APIs and more but what I need to solve for is that the ISV partner I am working with needs to deploy a set of Azure Services on their customers' subscriptions and configure them uniquely for each customer.
+The problem that I want to solve with _UniTTY_ deals with deploying services on Azure. You'd think why is that a big deal? And, you are right! - deploying Azure services and automating them isn't a big deal and there are a lot of ways to do that - ARM templates, Azure CLI, PowerShell, Ansible, Terraform, REST APIs and more but what I need to solve for is that the ISV partner I am working with, needs to deploy a set of Azure Services on their customers' subscriptions and configure them uniquely for each customer.
 
-The Azure Application offer on Azure Marketplace comes close but it doesn't work since I also need to register the resource providers on each customer's subscription. Short of sending a script that uses Azure CLI commands or PowerShell cmdlets, nothing really works since it needs to be close to zero administrative work for their customers.
+The tricky part is it also needs to register a resource provider so I needed something that goes beyond the current scope of automation possible today.
 
 How does _UniTTY_ solve it for me? With the simple matter of converting my shell scripts to a web app and allowing me to send a bunch of arguments using the URL!
 
