@@ -38,7 +38,7 @@ Taking the multiple commands approach, you can run _UniTTY_ using Docker as foll
 ```
 docker run -it -p 8080:8080 docker.io/ashisa/unitty gotty /bin/bash -c "az login && az group create --name myrg --location southindia && az vm create --name myvm01 --resource-group myrg --image UbuntuLTS --admin-username vmadmin --admin-password R$ND0MPA%%WD"
 ```
-Once you run it and browse to http://127.0.0.1:8080, you will see that you are prompted to connect to your Azure subscription which will be followed by the resource group and VM creation.
+Once you run it and browse to [http://127.0.0.1:8080](http://127.0.0.1:8080), you will see that you are prompted to connect to your Azure subscription which will be followed by the resource group and VM creation.
 
 
 
