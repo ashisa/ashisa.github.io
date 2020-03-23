@@ -3,7 +3,7 @@ title: Using UniTTY to automate tasks
 tags: unitty azure docker
 ---
 
-Thinking inside, outside and around the box is a big part of my job allows me to do exactly that. I have been exploring stuff related to Azure, Kubernetes and automating certain tasks which the current ways of automation do not allow.
+Thinking inside, outside and around the box is a big part of what I do as a Cloud Solution Architect. For the last few weeks, I have been exploring stuff related to Azure, Kubernetes and automating certain tasks which the current ways of automation do not allow.
 
 Last week, this quest lead me to two awesome projects on GitHub - [ttyd](https://github.com/tsl0922/ttyd) and [GoTTY](https://github.com/yudai/gotty). Both these projects allow you to turn any command line tool to a web app. This got me started with building something that uses this newfound power to do things in a new way and I came up with [UniTTY](https://github.com/ashisa/unitty).
 
