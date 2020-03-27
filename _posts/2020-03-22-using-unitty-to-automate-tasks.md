@@ -36,9 +36,8 @@ Once you run it and browse to [http://127.0.0.1:8080](http://127.0.0.1:8080), yo
 If you want to do this using a script, it would look like the following -
 ```
 #!/bin/bash
-ARG=$1
-RG=$(echo $ARG |awk '{print $1}')
-VM=$(echo $ARG |awk '{print $2}')
+RG=$1
+VM=$2
 
 if [ "$RG" == "" ] || [ "$VM" == "" ]
 then
@@ -76,7 +75,7 @@ docker run -it -p 8080:8080 ashisa/unitty-script
 ```
 Now you can launch the browser and provide the script arguments using the following URL -
 
-[http://127.0.0.1:8080/arg=myrg%20myvm01](http://127.0.0.1:8080/arg=myrg%20myvm01)
+[http://127.0.0.1:8080/?arg=myrg&arg=myvm02](http://127.0.0.1:8080/?arg=myrg&arg=myvm02)
 
 You can use _GoTTY_ options such as restricting how many clients can connect to it and how many times; as well as randomizing the URL and adding username/password to access the URL so that should cover the essentials when it comes to security.
 
