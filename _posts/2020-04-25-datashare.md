@@ -20,7 +20,7 @@ On a very high-level, the key automation was done in two parts -
 
 Let's dive deeper!
 
-## Using Azure Functions app to automate provider side of things ##
+## Automate provider stuff ##
 
 As I was aiming for a quick turnaround, I used the Azure Data Share PowerShell Module to quickly automate the creation of data share account, shares as well as data sets. I also used the same function to send an invite to the receipents.
 
@@ -53,6 +53,8 @@ The data consumers can now visit the following URL to get themselves an invitati
 ```
 https://datashare0305func.azurewebsites.net/api/initiate?email=ashisa78@live.com
 ```
+
+## How does this happen? ##
 
 Let's dive deeper in the code that makes this happen!
 
@@ -89,9 +91,11 @@ New-AzStorageContainer -Container dataset1 -Context $storageAccount.Context
 $Script:dataset = New-AzDataShareDataSet -ResourcegroupName $resourceGroup -AccountName $dsaccountname -ShareName $dssharename -Name DataSet1 -StorageAccountResourceId $storageAccount.Id -Container dataset1
 ```
 
-We create the data share account if it doesn't exist already. We then set up the role assignment on the storage account and create a data share which is then followed up by creating a container and a dataset so that you can test it out.
+We create the data share account if it doesn't exist already. We then set up the role assignment on the storage account and create a data share which is then followed up by creating a container and a dataset so that you can test it out. Ideally, this is a one-time step.
 
-You can uplaod a file to the container as well if you want to experience the data synchronization as well.
+You can upload a file to the container as well if you want to experience the data synchronization as well.
+
+## Creating invite ##
 
 The code from the invite function look like the following -
 ```
@@ -126,7 +130,9 @@ $header = ConvertFrom-StringData -StringData $("Location = $($url)")
 
 This function expects an email ID as a parameter and uses that to create an invitation which is an essential step on the provider side. This step is then followed up by creating an ACI instance which uses the [UniTTY-DS](https://github.com/ashisa/unitty/tree/master/unitty-ds) container and passes along the invitation ID and data set ID as well as the path of the script in the consumer folder in the GitHub repository.
 
-We send back a redirect header so that consumer is now redirected to the ACI instance where the following code us executed -
+## Setting up consumers ##
+
+We send back a redirect header back so that consumer is now redirected to the ACI instance where the following code us executed -
 
 ```
 Write-Host ""
