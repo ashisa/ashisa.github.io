@@ -1,5 +1,5 @@
 ---
-title: Building data exchange experience on Azure
+title: Building a data exchange on Azure with Azure Data Share
 tagsL: azure azure-data-share unitty aci powershell
 ---
 
